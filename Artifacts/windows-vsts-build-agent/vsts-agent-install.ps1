@@ -178,7 +178,6 @@ function Get-AgentPackage
             $basicAuth = [System.Text.Encoding]::UTF8.GetBytes($basicAuth)
             $basicAuth = [System.Convert]::ToBase64String($basicAuth)
             $headers = @{ Authorization = ("Basic {0}" -f $basicAuth) }
-            Write-Host $basicAuth
 
             $agentList = Invoke-RestMethod -Uri $vstsAgentUrl -Headers $headers -Method Get -ContentType application/json
             $agent = $agentList.value
